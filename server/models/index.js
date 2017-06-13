@@ -8,9 +8,7 @@ module.exports = {
       });
     }, 
     post: function (data) {
-      // var escapedText = db.connection.escape(data.text);
-      // console.log(escapedText);
-      db.connection.query(`INSERT INTO messages (message) VALUES('${data.text}')`);
+      db.connection.query(`INSERT INTO messages (message) VALUES(${db.connection.escape(data.text)})`);
     }
   },
 
@@ -21,8 +19,9 @@ module.exports = {
       });
     },
     post: function (data) {
-      db.connection.query(`INSERT INTO users (name) VALUES('${data.username}')`);
+      db.connection.query(`INSERT INTO users (name) VALUES(${db.connection.escape(data.username)})`);
     }
   }
 };
 
+// INSERT INTO messages (message) VALUES('${escapedText}
