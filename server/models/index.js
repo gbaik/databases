@@ -8,7 +8,12 @@ module.exports = {
       });
     }, 
     post: function (data) {
-      db.connection.query(`INSERT INTO messages (message) VALUES(${db.connection.escape(data.text)})`);
+      db.connection.query(`INSERT IGNORE INTO users (name) VALUES(${db.connection.escape(data.username)})`);
+      db.connection.query(`INSERT IGNORE INTO rooms (name) VALUES(${db.connection.escape(data.roomname)})`);
+      db.connection.query(`INSERT INTO messages (message, room_id, user_id) 
+        VALUES((${db.connection.escape(data.text)}),
+        (SELECT room_id FROM rooms WHERE name=${db.connection.escape(data.roomname)}),
+        (SELECT user_id FROM users WHERE name=${db.connection.escape(data.username)}))`);
     }
   },
 
@@ -23,5 +28,3 @@ module.exports = {
     }
   }
 };
-
-// INSERT INTO messages (message) VALUES('${escapedText}

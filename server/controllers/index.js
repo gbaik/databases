@@ -12,14 +12,13 @@ var defaultCorsHeaders = {
 module.exports = {
   messages: {
     get: function (req, res) {
-      models.messages.get(function(results) {
+      models.messages.get(function(data) {
         res.writeHead(200, defaultCorsHeaders);
-        res.end( JSON.stringify({results: [{username: 'gideon', text: 'hello', roomname: 'lobby'}]}));
+        res.end( JSON.stringify({results: data}));
       });    
     }, 
     post: function (req, res) {
       res.writeHead(201, defaultCorsHeaders);
-      console.log(req.body);
       models.messages.post(req.body);
       res.end(JSON.stringify(req.body));
     } 
