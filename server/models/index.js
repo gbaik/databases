@@ -25,7 +25,7 @@ module.exports = {
       });
     },
     post: function (data) {
-      db.connection.query(`INSERT INTO users (username) VALUES(${db.connection.escape(data.username)})`);
+      db.connection.query(`INSERT IGNORE INTO users (username) VALUES(${db.connection.escape(data.username)})`);
     }
   }
 };

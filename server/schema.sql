@@ -34,11 +34,11 @@ CREATE TABLE messages (
 --   FOREIGN KEY (room_id) REFERENCES rooms(room_id)
 -- );
 
-INSERT INTO users (username) VALUES('gideon');
+-- INSERT INTO users (username) VALUES('gideon');
 
-INSERT INTO rooms (roomname) VALUES('lobby');
+-- INSERT INTO rooms (roomname) VALUES('lobby');
 
-INSERT INTO messages (text, user_id, room_id) VALUES('hey there', 1, 1); 
+-- INSERT INTO messages (text, user_id, room_id) VALUES('hey there', 1, 1); 
   -- (SELECT id FROM rooms WHERE name=${db.connection.escape(data.roomname)}),
   -- (SELECT id FROM users WHERE name=${db.connection.escape(data.username)}))`);
 
